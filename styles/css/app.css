@@ -235,6 +235,12 @@ main .container .gameboard-container {
   text-align: center;
   margin: 2rem auto 7rem;
   position: relative;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.timer-container.show {
+  opacity: 1;
 }
 .timer-container span.timer {
   position: absolute;
@@ -284,7 +290,19 @@ main .container .gameboard-container {
     opacity: 1;
   }
 }
+button.start-game {
+  border-radius: 5px;
+  background-color: #92efa4;
+  color: var(--light-text);
+  cursor: pointer;
+  padding: 1rem;
+  border: none;
+  margin: 1rem auto;
+  display: block;
+}
+
 .word-container {
+  position: relative;
   margin: auto;
 }
 .word-container .scrambled-word-container {

@@ -1,4 +1,5 @@
 .word-container {
+  position: relative;
   margin: auto;
   .scrambled-word-container {
     @include wrapper($wrapper);

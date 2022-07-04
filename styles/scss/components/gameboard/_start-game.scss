@@ -1,0 +1,10 @@
+button.start-game {
+  @include radius(5px);
+  @include bg($winner-green);
+  color: var(--light-text);
+  cursor: pointer;
+  padding: 1rem;
+  border: none;
+  margin: 1rem auto;
+  display: block;
+}

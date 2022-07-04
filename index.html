@@ -9,6 +9,8 @@
     <!-- icon library -->
     <!-- fontawesome library -->
     <script src="https://kit.fontawesome.com/6e358658ed.js" crossorigin="anonymous"></script>
+    <!-- fav -->
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
     <title>Word Scramble</title>
 </head>
 <body>
@@ -40,26 +42,17 @@
                 <div class="word-container">
                     <!-- streak counter -->
                     <div class="timer-container">
-
                         <div class="pulse"></div>
                         <span class="timer"></span>
                     </div>
+                    <!-- start new game -->
+                    <button class="start-game f-bold" id="startGame">Start New Game</button>
                     <!-- scramble word -->
                     <div class="scrambled-word-container">
-                        <ul>
-                            <li>T</li>
-                            <li>R</li>
-                            <li>E</li>
-                            <li>E</li>
-                            <li>H</li>
-                            <li>O</li>
-                            <li>U</li>
-                            <li>S</li>
-                            <li>E</li>
+                        <ul id="wordContainer">
+                            <!-- dynamic -->
                         </ul>
                     </div>
-                    <!-- used word list -->
-                    <div class="used-word-list-container"></div>
                 </div>
                 <div class="keyboard-container">
                     <div class="keyboard">
