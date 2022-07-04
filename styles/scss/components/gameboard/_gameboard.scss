@@ -1,0 +1,14 @@
+main {
+  @include bg(var(--secondary-bg));
+  height: calc(100vh - 51px);
+  padding: 1rem 2rem;
+  .container {
+    @include wrapper($wrapper);
+    @include flex(column, nowrap, flex-start, stretch);
+    position: relative;
+    .gameboard-container {
+      @include flex(column, nowrap, flex-start, stretch);
+      height: calc(100vh - 175px);
+    }
+  }
+}

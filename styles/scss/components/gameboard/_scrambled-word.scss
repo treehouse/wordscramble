@@ -1,0 +1,18 @@
+.word-container {
+  margin: auto;
+  .scrambled-word-container {
+    @include wrapper($wrapper);
+    margin: auto;
+    ul {
+      @include flex(row, wrap, center, center);
+      gap: 0.25rem;
+      li {
+        @include container(0, var(--word-bg), var(--dark-text), 0.5rem);
+        @include same-size(60px);
+        @include center-flex;
+        font-size: 1.7rem;
+        font-family: $prim-font-med;
+      }
+    }
+  }
+}

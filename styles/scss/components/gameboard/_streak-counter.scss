@@ -1,0 +1,35 @@
+.streak-counter-container {
+  @include flex(row, wrap, space-evenly, center);
+  gap: 0.5rem;
+  text-align: center;
+  @media (min-width: 500px) {
+    flex-wrap: nowrap;
+  }
+  @media (min-width: 768px) {
+    justify-content: flex-end;
+  }
+  .streak-container {
+    @include container(1rem, #eee, var(--light-text), 0.5rem);
+    width: 100%;
+    @media (min-width: 768px) {
+      max-width: 250px;
+    }
+    &.best-streak {
+      @include bg(var(--primary-bg));
+      color: var(--accent);
+    }
+    &.current-streak {
+      @include bg(var(--accent));
+    }
+  }
+  p {
+    font-size: 1rem;
+    text-transform: uppercase;
+    @media (min-width: 768px) {
+      font-size: 1.2rem;
+    }
+  }
+  span {
+    font-size: 2em;
+  }
+}

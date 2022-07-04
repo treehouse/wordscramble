@@ -11,15 +11,18 @@
 :root {
   --primary-bg: #ffffff;
   --secondary-bg: #eff1f6;
-  --primary-accent: #4dc2e7;
+  --accent: #4dc2e7;
   --light-text: #ffffff;
   --dark-text: #394053;
+  --word-bg: rgba(255, 255, 255, 0.5);
   --key-bg: var(--secondary-bg);
 }
 
 body {
   font-family: "Gotham Rounded Book", sans-serif;
   color: var(--dark-text);
+  min-height: 100vh;
+  overflow: hidden;
 }
 
 .f-light {
@@ -55,8 +58,56 @@ fieldset li {
   font-family: "Gotham Rounded Book", sans-serif;
 }
 
+ul {
+  margin: 0;
+}
+ul li {
+  list-style: none;
+}
+
+.flex {
+  display: flex;
+}
+.flex.row {
+  flex-direction: row;
+}
+.flex.col {
+  flex-direction: column;
+}
+.flex.wrap {
+  flex-wrap: wrap;
+}
+.flex.no-wrap {
+  flex-wrap: nowrap;
+}
+.flex.j-start {
+  justify-content: flex-start;
+}
+.flex.j-end {
+  justify-content: flex-end;
+}
+.flex.j-sb {
+  justify-content: space-between;
+}
+.flex.j-around {
+  justify-content: space-around;
+}
+.flex.j-evenly {
+  justify-content: space-evenly;
+}
+.flex.a-start {
+  align-items: flex-start;
+}
+.flex.a-end {
+  align-items: flex-end;
+}
+.flex.a-center {
+  align-items: center;
+}
+
 header {
   background-color: var(--primary-bg);
+  padding: 0.5rem 1.5rem;
 }
 header .container {
   width: 100%;
@@ -67,6 +118,259 @@ header .container {
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
+}
+header .container h1 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+@media (min-width: 500px) {
+  header .container h1 {
+    font-size: 1.6rem;
+  }
+}
+header .container h1 span {
+  background-color: var(--accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  padding: 0.33rem 0.33rem 0.1rem 0.33rem;
+  font-size: 0.9em;
+  color: white;
+  margin-right: 0.1rem;
+}
+header .container ul.utility-nav li {
+  height: 35px;
+  width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: auto 0.15rem;
+}
+
+main {
+  background-color: var(--secondary-bg);
+  height: calc(100vh - 51px);
+  padding: 1rem 2rem;
+}
+main .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  position: relative;
+}
+main .container .gameboard-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  height: calc(100vh - 175px);
+}
+
+.streak-counter-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+@media (min-width: 500px) {
+  .streak-counter-container {
+    flex-wrap: nowrap;
+  }
+}
+@media (min-width: 768px) {
+  .streak-counter-container {
+    justify-content: flex-end;
+  }
+}
+.streak-counter-container .streak-container {
+  padding: 1rem;
+  background-color: #eee;
+  color: var(--light-text);
+  border-radius: 0.5rem;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .streak-counter-container .streak-container {
+    max-width: 250px;
+  }
+}
+.streak-counter-container .streak-container.best-streak {
+  background-color: var(--primary-bg);
+  color: var(--accent);
+}
+.streak-counter-container .streak-container.current-streak {
+  background-color: var(--accent);
+}
+.streak-counter-container p {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  .streak-counter-container p {
+    font-size: 1.2rem;
+  }
+}
+.streak-counter-container span {
+  font-size: 2em;
+}
+
+.timer-container {
+  text-align: center;
+  margin: 2rem auto 7rem;
+  position: relative;
+}
+.timer-container span.timer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: var(--light-text);
+  margin: 0 auto;
+  font-family: "Gotham Rounded Bold", sans-serif;
+}
+.timer-container .pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-color: var(--accent);
+  height: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: pulseTimer 1s ease-in-out infinite;
+}
+.timer-container .pulse.gameover {
+  background-color: #ef9292;
+}
+.timer-container .pulse.winner {
+  background-color: #92efa4;
+}
+
+@keyframes pulseTimer {
+  0% {
+    height: 100px;
+    width: 100px;
+    opacity: 1;
+  }
+  80% {
+    height: 50px;
+    width: 50px;
+    opacity: 0;
+  }
+  100% {
+    height: 100px;
+    width: 100px;
+    opacity: 1;
+  }
+}
+.word-container {
+  margin: auto;
+}
+.word-container .scrambled-word-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin: auto;
+}
+.word-container .scrambled-word-container ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+}
+.word-container .scrambled-word-container ul li {
+  padding: 0;
+  background-color: var(--word-bg);
+  color: var(--dark-text);
+  border-radius: 0.5rem;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
+  font-family: "Gotham Rounded Medium", sans-serif;
+}
+
+.keyboard-container {
+  background-color: var(--primary-bg);
+  border-radius: 1rem;
+  padding: 2rem 1rem;
+  margin-top: auto;
+  display: none;
+}
+.keyboard-container .keyboard {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.keyboard-container .keyboard ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+}
+.keyboard-container .keyboard ul li {
+  padding: 0;
+  background-color: var(--secondary-bg);
+  color: var(--dark-text);
+  border-radius: 0.5rem;
+  height: 45px;
+  width: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Gotham Rounded Medium", sans-serif;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 2px 4px 0px rgba(0, 0, 0, 0.15);
+  transition: 0.1s;
+}
+.keyboard-container .keyboard ul li::selection {
+  background-color: transparent;
+}
+.keyboard-container .keyboard ul li:active {
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  margin-top: 2px;
+  margin-left: 2px;
+  margin-right: -2px;
+  margin-bottom: -2px;
+}
+@media (min-width: 580px) {
+  .keyboard-container {
+    display: block;
+  }
 }
 
 /*# sourceMappingURL=app.css.map */

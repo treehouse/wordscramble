@@ -1,0 +1,41 @@
+.timer-container {
+  text-align: center;
+  margin: 2rem auto 7rem;
+  position: relative;
+  span.timer {
+    @include absolute-center;
+    font-size: 2rem;
+    color: var(--light-text);
+    margin: 0 auto;
+    font-family: $prim-font-bold;
+  }
+  .pulse {
+    @include absolute-center;
+    @include radius(50%);
+    @include bg(var(--accent));
+    @include same-size(100px);
+    @include center-flex;
+    animation: pulseTimer 1s ease-in-out infinite;
+    &.gameover {
+      @include bg($gameover-red);
+    }
+    &.winner {
+      @include bg($winner-green);
+    }
+  }
+}
+
+@keyframes pulseTimer {
+  0% {
+    @include same-size(100px);
+    opacity: 1;
+  }
+  80% {
+    @include same-size(50px);
+    opacity: 0;
+  }
+  100% {
+    @include same-size(100px);
+    opacity: 1;
+  }
+}

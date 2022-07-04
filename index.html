@@ -15,7 +15,7 @@
     <header>
         <div class="container">
             <h1 class="f-bold"><span>W</span>ord Scramble</h1>
-            <ul class="utility-nav">
+            <ul class="utility-nav flex row no-wrap j-start a-center">
                 <li><i class="fa-solid fa-star"></i></li>
                 <li><i class="fa-solid fa-toggle-off"></i></li>
             </ul>
@@ -24,15 +24,40 @@
     <main>
         <div class="container">
             <!-- streak counter -->
-            <div class="streak-counter-container"></div>
+            <div class="streak-counter-container">
+                <div class="best-streak streak-container">
+                    <p class="f-bold">Best streak:</p>
+                    <span class="streak-number f-bold">00</span>
+                </div>
+                <div class="current-streak streak-container">
+                    <p class="f-bold">Current streak:</p>
+                    <span class="streak-number f-bold">00</span>
+                </div>
+            </div>
 
             <!-- gameboard -->
             <div class="gameboard-container">
                 <div class="word-container">
                     <!-- streak counter -->
-                    <div class="counter-container"></div>
+                    <div class="timer-container">
+
+                        <div class="pulse"></div>
+                        <span class="timer"></span>
+                    </div>
                     <!-- scramble word -->
-                    <div class="scrambled-word-container"></div>
+                    <div class="scrambled-word-container">
+                        <ul>
+                            <li>T</li>
+                            <li>R</li>
+                            <li>E</li>
+                            <li>E</li>
+                            <li>H</li>
+                            <li>O</li>
+                            <li>U</li>
+                            <li>S</li>
+                            <li>E</li>
+                        </ul>
+                    </div>
                     <!-- used word list -->
                     <div class="used-word-list-container"></div>
                 </div>

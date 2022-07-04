@@ -22,6 +22,18 @@
   transform: translate(-50%, -50%);
 }
 
+@mixin size($height, $width) {
+  @content;
+  height: $height;
+  width: $width;
+}
+
+@mixin same-size($size) {
+  @content;
+  height: $size;
+  width: $size;
+}
+
 @mixin wrapper($max-width) {
   @content;
   width: 100%;

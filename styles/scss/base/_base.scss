@@ -12,13 +12,16 @@
 :root {
   --primary-bg: #ffffff;
   --secondary-bg: #eff1f6;
-  --primary-accent: #4dc2e7;
+  --accent: #4dc2e7;
   --light-text: #ffffff;
   --dark-text: #394053;
+  --word-bg: rgba(255, 255, 255, 0.5);
   --key-bg: var(--secondary-bg);
 }
 
 body {
   font-family: $prim-font;
   color: var(--dark-text);
+  min-height: 100vh;
+  overflow: hidden;
 }

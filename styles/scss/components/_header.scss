@@ -1,9 +1,34 @@
 header {
   @include bg(var(--primary-bg));
+  padding: 0.5rem 1.5rem;
   .container {
     @include wrapper($wrapper);
     @include flex(row, nowrap, space-between, center);
     h1 {
+      @include flex(row, nowrap, flex-start, center);
+      margin: 0;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      @media (min-width: 500px) {
+        font-size: 1.6rem;
+      }
+      span {
+        @include bg(var(--accent));
+        @include center-flex;
+        @include radius(0.5rem);
+        padding: 0.33rem 0.33rem 0.1rem 0.33rem;
+        font-size: 0.9em;
+        color: white;
+        margin-right: 0.1rem;
+      }
+    }
+    ul.utility-nav {
+      li {
+        @include same-size(35px);
+        @include center-flex;
+        cursor: pointer;
+        margin: auto 0.15rem;
+      }
     }
   }
 }
