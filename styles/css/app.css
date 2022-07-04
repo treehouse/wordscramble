@@ -1,0 +1,72 @@
+@import url("http://fonts.cdnfonts.com/css/gotham-rounded-light");
+@import url("http://fonts.cdnfonts.com/css/gotham-rounded-book");
+@import url("http://fonts.cdnfonts.com/css/gotham-rounded-medium");
+@import url("http://fonts.cdnfonts.com/css/gotham-rounded-bold");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-bg: #ffffff;
+  --secondary-bg: #eff1f6;
+  --primary-accent: #4dc2e7;
+  --light-text: #ffffff;
+  --dark-text: #394053;
+  --key-bg: var(--secondary-bg);
+}
+
+body {
+  font-family: "Gotham Rounded Book", sans-serif;
+  color: var(--dark-text);
+}
+
+.f-light {
+  font-family: "Gotham Rounded Light", sans-serif;
+}
+
+.f-reg {
+  font-family: "Gotham Rounded Book", sans-serif;
+}
+
+.f-med {
+  font-family: "Gotham Rounded Medium", sans-serif;
+}
+
+.f-bold {
+  font-family: "Gotham Rounded Bold", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+button,
+input,
+textarea,
+label,
+legend,
+fieldset li {
+  font-family: "Gotham Rounded Book", sans-serif;
+}
+
+header {
+  background-color: var(--primary-bg);
+}
+header .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*# sourceMappingURL=app.css.map */

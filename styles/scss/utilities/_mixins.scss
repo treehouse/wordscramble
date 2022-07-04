@@ -1,0 +1,48 @@
+@mixin flex($dir, $wrap, $just, $align) {
+  @content;
+  display: flex;
+  flex-direction: $dir;
+  flex-wrap: $wrap;
+  justify-content: $just;
+  align-items: $align;
+}
+
+@mixin center-flex {
+  @content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin absolute-center {
+  @content;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin wrapper($max-width) {
+  @content;
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+@mixin bg($color) {
+  @content;
+  background-color: $color;
+}
+
+@mixin radius($radius) {
+  @content;
+  border-radius: $radius;
+}
+
+@mixin container($padding, $bg-color, $color, $radius) {
+  @content;
+  padding: $padding;
+  background-color: $bg-color;
+  color: $color;
+  border-radius: $radius;
+}

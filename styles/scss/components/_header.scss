@@ -1,0 +1,9 @@
+header {
+  @include bg(var(--primary-bg));
+  .container {
+    @include wrapper($wrapper);
+    @include flex(row, nowrap, space-between, center);
+    h1 {
+    }
+  }
+}

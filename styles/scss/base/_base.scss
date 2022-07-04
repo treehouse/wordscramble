@@ -1,0 +1,24 @@
+@import url("http://fonts.cdnfonts.com/css/gotham-rounded-light");
+@import url("http://fonts.cdnfonts.com/css/gotham-rounded-book");
+@import url("http://fonts.cdnfonts.com/css/gotham-rounded-medium");
+@import url("http://fonts.cdnfonts.com/css/gotham-rounded-bold");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-bg: #ffffff;
+  --secondary-bg: #eff1f6;
+  --primary-accent: #4dc2e7;
+  --light-text: #ffffff;
+  --dark-text: #394053;
+  --key-bg: var(--secondary-bg);
+}
+
+body {
+  font-family: $prim-font;
+  color: var(--dark-text);
+}

@@ -1,0 +1,29 @@
+.f-light {
+  font-family: $prim-font-light;
+}
+.f-reg {
+  font-family: $prim-font-reg;
+}
+.f-med {
+  font-family: $prim-font-med;
+}
+.f-bold {
+  font-family: $prim-font-bold;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+button,
+input,
+textarea,
+label,
+legend,
+fieldset li {
+  font-family: $prim-font;
+}
