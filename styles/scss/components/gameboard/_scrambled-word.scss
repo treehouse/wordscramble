@@ -7,13 +7,29 @@
     ul {
       @include flex(row, wrap, center, center);
       gap: 0.25rem;
+      &:nth-child(2) {
+        margin-top: 1rem;
+      }
       li {
         @include container(0, var(--word-bg), var(--dark-text), 0.5rem);
         @include same-size(60px);
         @include center-flex;
+        transition: background 1s;
         font-size: 1.7rem;
         font-family: $prim-font-med;
+        &.wrong {
+          @include bg($gameover-red);
+        }
       }
     }
+  }
+}
+
+@keyframes wrongGuess {
+  0% {
+    @include bg($gameover-red);
+  }
+  100% {
+    @include bg(var(--word-bg));
   }
 }

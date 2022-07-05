@@ -1,21 +1,3 @@
-// let root = document.documentElement;
-
-// let time = 10;
-// let timer = document.querySelector('.timer');
-// const pulse = document.querySelector('.pulse');
-// timer.textContent = time;
-
-// const timerInterval = setInterval(() => {
-//     timer.textContent = time;
-//     time -=1;
-//     if (time < 0) {
-//         clearInterval(timerInterval);
-//         timer.textContent = 'X';
-//         pulse.style.animation = 'none';
-//         pulse.classList.add('winner');
-//     }
-// }, 1000);
-
 const gameDefaults = {
     timer: 10,
     icons: {
@@ -77,15 +59,64 @@ function setTimer(time) {
     }, 1000);
 }
 
+// building guessed word container
+function buildGuessedWord(word) {
+    guessedWordContainer.innerHTML = '';
+    word.forEach(letter => {
+        let li = document.createElement('li');
+        guessedWordContainer.appendChild(li);
+    })
+}
+
 // start new game with random word
 function start() {
+    let currentGuessIndex = 0;
     pulse.classList = 'pulse';
-    timer.textContent = '';
+    timer.textContent = 'Go!';
     let randomWord = generateRandomWord(words); 
     let splitRandomWord = randomWord.split("");
     let randomizedWord = shuffleLetters(splitRandomWord);
     buildWordToGameboard(randomizedWord);
     startGame.style.display = 'none';
+    buildGuessedWord(randomizedWord);
+    keyboardInputListen(randomizedWord, currentGuessIndex);
+}
+
+function keyboardInputListen(word, index) {
+    document.addEventListener('keydown', e => {
+        let keyboardKeys = document.querySelectorAll('.keyboard li');
+        let key = e.key.toLowerCase();
+        let guessKeys = document.querySelectorAll('#guessedWordContainer li');
+        const guessKeysLimit = guessKeys.length -1;
+        
+
+        const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+        if (alphabet.includes(key)) {
+            keyboardKeys.forEach(letter => {    
+                if (letter.textContent.toLowerCase() === key) {
+                    letter.style.animation = 'keyboardClick .3s ease forwards';
+                }
+                letter.addEventListener('animationend', () => {
+                    letter.style.animation = '';
+                });
+            });
+            guessKeys[index].textContent = key.toLowerCase();
+            if (index == guessKeysLimit) {
+                guessKeys.forEach(letter => {
+                    index = 0;
+                    letter.textContent = '';
+                    letter.style.animation = 'wobble .3s forwards';
+                    letter.classList.add('wrong');
+                    letter.addEventListener('animationend', () => {
+                        letter.style.animation = '';
+                        letter.classList.remove('wrong');
+                    })
+                });
+            } else {
+                index += 1;
+            }
+        }
+    })
 }
 
 // gameOver function
@@ -97,6 +128,9 @@ function gameOver() {
     pulse.classList = 'pulse lose';
 }
 
+function checkWin() {
+
+}
 
 // starting a new game on startGame button click
 const startGameBtn = document.getElementById('startGame');
@@ -104,3 +138,4 @@ startGameBtn.addEventListener('click', () => {
     start();
     setTimer(gameDefaults.timer);
 });
+

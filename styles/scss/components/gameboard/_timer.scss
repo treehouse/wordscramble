@@ -4,7 +4,6 @@
   position: relative;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.4s ease;
   &.show {
     opacity: 1;
   }
@@ -21,7 +20,7 @@
     @include bg(var(--accent));
     @include same-size(100px);
     @include center-flex;
-    animation: pulseTimer 1s ease-in-out infinite;
+    animation: pulseTimer 1s 1s ease-in-out infinite;
     &.lose {
       @include bg($gameover-red);
       animation: none;

@@ -1,7 +1,4 @@
-@import url("http://fonts.cdnfonts.com/css/gotham-rounded-light");
-@import url("http://fonts.cdnfonts.com/css/gotham-rounded-book");
 @import url("http://fonts.cdnfonts.com/css/gotham-rounded-medium");
-@import url("http://fonts.cdnfonts.com/css/gotham-rounded-bold");
 * {
   margin: 0;
   padding: 0;
@@ -237,7 +234,6 @@ main .container .gameboard-container {
   position: relative;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.4s ease;
 }
 .timer-container.show {
   opacity: 1;
@@ -264,7 +260,7 @@ main .container .gameboard-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: pulseTimer 1s ease-in-out infinite;
+  animation: pulseTimer 1s 1s ease-in-out infinite;
 }
 .timer-container .pulse.lose {
   background-color: #ef9292;
@@ -331,6 +327,9 @@ button.start-game:active {
   align-items: center;
   gap: 0.25rem;
 }
+.word-container .scrambled-word-container ul:nth-child(2) {
+  margin-top: 1rem;
+}
 .word-container .scrambled-word-container ul li {
   padding: 0;
   background-color: var(--word-bg);
@@ -341,10 +340,22 @@ button.start-game:active {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background 1s;
   font-size: 1.7rem;
   font-family: "Gotham Rounded Medium", sans-serif;
 }
+.word-container .scrambled-word-container ul li.wrong {
+  background-color: #ef9292;
+}
 
+@keyframes wrongGuess {
+  0% {
+    background-color: #ef9292;
+  }
+  100% {
+    background-color: var(--word-bg);
+  }
+}
 .keyboard-container {
   background-color: var(--primary-bg);
   border-radius: 1rem;
@@ -382,7 +393,7 @@ button.start-game:active {
   justify-content: center;
   align-items: center;
   font-family: "Gotham Rounded Medium", sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   cursor: pointer;
   box-shadow: 2px 4px 0px rgba(0, 0, 0, 0.15);
   transition: 0.1s;
@@ -400,6 +411,19 @@ button.start-game:active {
 @media (min-width: 580px) {
   .keyboard-container {
     display: block;
+  }
+}
+
+@keyframes keyboardClick {
+  0% {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    margin-top: 2px;
+    margin-left: 2px;
+    margin-right: -2px;
+    margin-bottom: -2px;
+  }
+  100% {
+    margin: 0;
   }
 }
 
