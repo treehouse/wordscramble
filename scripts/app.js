@@ -16,13 +16,13 @@
 //     }
 // }, 1000);
 
-
-
-/**
- * 1. Generate random word from array
- * 2. Shuffle letters from that word
- * 3. Return randomized word
- */
+const gameDefaults = {
+    timer: 10,
+    icons: {
+        win: '<i class="fa-solid fa-star"></i>',
+        lose: '<i class="fa-solid fa-xmark"></i>',
+    }
+}
 
 const words = [
     'treehouse',
@@ -30,15 +30,12 @@ const words = [
     'javascript',
 ];
 
-let randomWord = generateRandomWord(words);
-let splitRandomWord = randomWord.split("");
-
-// 1. generate random word from array
+// generate random word from array
 function generateRandomWord(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
-// 2. shuffle letters from randomly chosen word
+// shuffle letters from randomly chosen word
 function shuffleLetters(word) {
     let currentIndex = word.length,  randomIndex;
 
@@ -56,12 +53,9 @@ function shuffleLetters(word) {
     return word;
 }
 
-// 3. return randomized word
-let randomizedWord = shuffleLetters(splitRandomWord);
-
-// 4. Build word to gameboard on gameStart
-const wordContainer = document.getElementById('wordContainer');
+// Build word to gameboard on gameStart
 function buildWordToGameboard(word) {
+    wordContainer.innerHTML = '';
     word.forEach(letter => {
         let li = document.createElement('li');
         li.textContent = letter;
@@ -69,15 +63,44 @@ function buildWordToGameboard(word) {
     });
 }
 
+// sets game timer with a timer (in seconds)
+function setTimer(time) {
+    document.getElementById('timerContainer').style.opacity = '1';
+    let timer = time;
+    let countDown = setInterval(() => {
+        document.getElementById('timer').textContent = timer;
+        timer -= 1;
+        if (timer < 0) {
+            clearInterval(countDown);
+            gameOver();
+        }
+    }, 1000);
+}
 
-/**
- * 
- * 1. initiate new game on startGame button click
- * 
- */
-
-const startGame = document.getElementById("startGame");
-startGame.addEventListener('click', () => {
+// start new game with random word
+function start() {
+    pulse.classList = 'pulse';
+    timer.textContent = '';
+    let randomWord = generateRandomWord(words); 
+    let splitRandomWord = randomWord.split("");
+    let randomizedWord = shuffleLetters(splitRandomWord);
     buildWordToGameboard(randomizedWord);
     startGame.style.display = 'none';
+}
+
+// gameOver function
+function gameOver() {
+    startGame.style.display = 'block';
+    startGame.textContent = 'Game Over. Play Again?';
+    startGame.classList = 'start-game lose';
+    timer.innerHTML = gameDefaults.icons.lose;
+    pulse.classList = 'pulse lose';
+}
+
+
+// starting a new game on startGame button click
+const startGameBtn = document.getElementById('startGame');
+startGameBtn.addEventListener('click', () => {
+    start();
+    setTimer(gameDefaults.timer);
 });

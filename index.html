@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- animation library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- stylesheet -->
     <link rel="stylesheet" href="./styles/css/app.css">
     <!-- icon library -->
@@ -41,9 +43,9 @@
             <div class="gameboard-container">
                 <div class="word-container">
                     <!-- streak counter -->
-                    <div class="timer-container">
-                        <div class="pulse"></div>
-                        <span class="timer"></span>
+                    <div class="timer-container" id="timerContainer">
+                        <div class="pulse" id="pulse"></div>
+                        <span class="timer" id="timer"></span>
                     </div>
                     <!-- start new game -->
                     <button class="start-game f-bold" id="startGame">Start New Game</button>

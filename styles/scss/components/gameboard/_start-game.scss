@@ -1,10 +1,20 @@
 button.start-game {
   @include radius(5px);
-  @include bg($winner-green);
+  @include bg(var(--accent));
   color: var(--light-text);
   cursor: pointer;
   padding: 1rem;
   border: none;
-  margin: 1rem auto;
+  margin: 5rem auto;
   display: block;
+  animation: fadeInDown 0.5s ease forwards;
+  transition: 0.1s;
+  box-shadow: 2px 4px 0px rgba(black, 0.15);
+  &.lose {
+    @include bg($gameover-red);
+    animation: wobble 1s ease forwards;
+  }
+  &:active {
+    box-shadow: 0 0 0 rgba(black, 0);
+  }
 }

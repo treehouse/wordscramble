@@ -266,11 +266,13 @@ main .container .gameboard-container {
   align-items: center;
   animation: pulseTimer 1s ease-in-out infinite;
 }
-.timer-container .pulse.gameover {
+.timer-container .pulse.lose {
   background-color: #ef9292;
+  animation: none;
 }
-.timer-container .pulse.winner {
+.timer-container .pulse.win {
   background-color: #92efa4;
+  animation: none;
 }
 
 @keyframes pulseTimer {
@@ -292,13 +294,23 @@ main .container .gameboard-container {
 }
 button.start-game {
   border-radius: 5px;
-  background-color: #92efa4;
+  background-color: var(--accent);
   color: var(--light-text);
   cursor: pointer;
   padding: 1rem;
   border: none;
-  margin: 1rem auto;
+  margin: 5rem auto;
   display: block;
+  animation: fadeInDown 0.5s ease forwards;
+  transition: 0.1s;
+  box-shadow: 2px 4px 0px rgba(0, 0, 0, 0.15);
+}
+button.start-game.lose {
+  background-color: #ef9292;
+  animation: wobble 1s ease forwards;
+}
+button.start-game:active {
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 }
 
 .word-container {
