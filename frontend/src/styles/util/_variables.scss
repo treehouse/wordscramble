@@ -1,0 +1,27 @@
+$breakpoints: (
+  // smalls
+  "small": 320px,
+  "mobile": 320px,
+  //   mediums
+  "smedium": 500px,
+  "medium": 768px,
+  "tablet": 768px,
+  //   larges
+  "large": 1024px,
+  "desktop": 1024px,
+  //   extra larges
+  "xlarge": 1200px,
+  "xxlarge": 1440px,
+  "widescreen": 1440px
+) !default;
+
+$primary-font: "Gotham Rounded", sans-serif;
+
+$primary: #8CE2F5;
+$dark-bg: #2C303A;
+$darker-bg: #1F2126;
+$darkest-bg: #191A1D;
+
+$error-red: #F58C8C;
+$gray: #D9D9D9;
+$white: #ffffff;
