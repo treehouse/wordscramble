@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    &::selection {
+        @include bg($primary);
+        color: white;
+    }
+}
+
+body {
+    min-height: 100vh;
+}
+
+span.accent {
+    color: $primary;
+}

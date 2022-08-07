@@ -1,0 +1,77 @@
+.overlay {
+    @include flex(column, nowrap, center, center);
+    @include bg($darker-bg);
+    @include size(100vh, 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+    // title
+    h1.game-title {
+        margin-bottom: 2rem;
+        font-size: 4rem;
+        color: white;
+        span.accent {
+            text-transform: uppercase;
+        }
+    }
+    // game stats
+    .game-stats {
+        @include wrapper(500px);
+        display: none;
+        text-align: center;
+        h2 {
+            font-size: 2.5rem;
+            margin: 1.5rem;
+            color: $error-red;
+        }
+        .stat-container {
+            @include bg($darkest-bg);
+            @include radius(.85rem);
+            line-height: 2rem;
+            color: white;
+            padding: 1.25rem;
+            .streaks-container {
+                margin-bottom: 1.5rem;
+            }
+            button {
+                @include bg($primary);
+                cursor: pointer;
+                @include radius(5px);
+                margin-top: 1.5rem;
+                font-size: 1rem;
+                color: $darkest-bg;
+                padding: .75rem 1.25rem;
+                border: none;
+            }
+        }
+        
+    }
+
+    // game buttons
+    .btn-group {
+        @include flex(row, nowrap, center, center);
+        margin-top: 2rem;
+        gap: 1.5rem;
+        button {
+            @include radius(5px);
+            @include bg($dark-bg);
+            cursor: pointer;
+            border: none;
+            padding: .75rem 1rem;
+            min-width: 185px;
+            font-size: 1rem;
+            transition: color .3s ease, background .3s ease;
+            &:first-child {
+                color: white;
+            }
+            &:last-child {
+                color: $primary;
+            }
+            &:hover {
+                @include bg($primary);
+                color: $darker-bg;
+            }
+        }
+    }
+}
