@@ -8,6 +8,7 @@ section.keyboard {
     color: $darker-bg;
     ul {
         @include flex(row, nowrap, center, center);
+        animation: bounceIn 1s ease forwards;
         list-style:none;
         li {
             @include bg($gray);
@@ -15,7 +16,7 @@ section.keyboard {
             @include center-flex;
             @include radius(.25rem);
             cursor: pointer;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin: .25rem;
             font-family: $primary-font;
             transition: background .3s, color .3s, transform .1s;

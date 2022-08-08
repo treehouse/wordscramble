@@ -22,7 +22,7 @@ section.progress-bar {
         @include bg($primary);
         width: 100%;
     }
-    75% {
+    60% {
         @include bg($error-red);
     }
     100% {

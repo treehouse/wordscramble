@@ -21,7 +21,7 @@
         <div class="modal-container" id="modalContainer">
             <div class="modal">
                 <p class="title">How To Play</p>
-                <p class="description">Scramble! This game will put your brain to the test. A random word will appear on the screen all jumbled up. You have 10 seconds to figure out what the word is. Get it right and you'll instantly move on to the next word, get it wrong and you'll lose and have to start over. How high can you get your streak before you fail?</p>
+                <p class="description">Scramble! This game will put your brain to the test. A random word will appear on the screen all jumbled up. You have <span class="accent">10 seconds</span> to figure out what the word is. Get it right and you'll instantly move on to the next word, get it wrong and you'll lose and have to start over. How high can you get your streak before you fail?</p>
                 <button id="closeModal">Okay</button>
             </div>
         </div>
@@ -33,8 +33,8 @@
             <h2>Times Up! 😢</h2>
             <div class="stat-container">
                 <div class="streaks-container">
-                    <p class="best-streak">Your best streak ever: <span class="accent">01</span></p>
-                    <p class="current-streak">Your streak this game: <span class="accent">01</span></p>
+                    <p class="best-streak">Your best streak ever: <span class="accent">0</span></p>
+                    <p class="current-streak">Your streak this game: <span class="accent">0</span></p>
                 </div>
                 <p class="no-personal-best-message" id="noPersonalBestMessage">Oh! You were <span class="accent">01</span> away from a new personal best!</p>
                 <p class="personal-best-message" id="personalBestMessage">Woah! You have a new personal best! 🔥</p>
@@ -52,32 +52,21 @@
         <header>
             <h1><span class="accent">w</span>ord<span class="accent">s</span>cramble</h1>
             <div class="streak-container">
-                <p class="best-streak">Best Streak: <span class="accent">01</span></p>
-                <p class="current-streak">Current Streak: <span class="accent">01</span></p>
+                <p class="best-streak">Best Streak: <span class="accent">0</span></p>
+                <p class="current-streak">Current Streak: <span class="accent">0</span></p>
             </div>
         </header>
         <section class="scramble">
-            <ul class="scrambled-word-container">
-                <li>p</li>
-                <li>y</li>
-                <li>t</li>
-                <li>h</li>
-                <li>o</li>
-                <li>n</li>
+            <ul class="scrambled-word-container" id="scrambledWordContainer">
+                
             </ul>
-            <ul class="scrambled-word-guess-container">
-                <li class="pending">p</li>
-                <li>y</li>
-                <li>t</li>
-                <li>h</li>
-                <li>o</li>
-                <li>n</li>
+            <ul class="scrambled-word-guess-container" id="scrambledWordGuessContainer">
             </ul>
         </section>
         <section class="progress-bar">
             <div class="progress" id="progress"></div>
         </section>
-        <section class="keyboard">
+        <section class="keyboard" id="keyboard">
             <ul>
                 <li>q</li>
                 <li>w</li>
