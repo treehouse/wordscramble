@@ -77,7 +77,7 @@ function startGame() {
     gameTitle.style.animation = 'bounceInUp 1s ease forwards';
     setTimeout(() => {
         gameTitle.style.animation = 'bounceOutDown 1s ease forwards';
-    }, 4500)
+    }, 4000);
 
     // start game countdown from 5
     let countdown = 5;
