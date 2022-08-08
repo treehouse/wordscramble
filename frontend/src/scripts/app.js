@@ -1,18 +1,18 @@
-const startGame = document.getElementById('startNewGame')
+const startGameBtn = document.getElementById('startNewGame')
 const gameBoard = document.getElementById('gameboard');
 const overlay = document.getElementById('overlay');
 const howToPlayBtn = document.getElementById('howToPlay');
 const modalContainer = document.getElementById('modalContainer');
 const closeModalBtn = document.getElementById('closeModal');
 
-startGame.addEventListener('click', () => {
+startGameBtn.addEventListener('click', () => {
     howToPlayBtn.setAttribute('disabled', true);
+    startGameBtn.setAttribute('disabled', true);
     let countdown = 5;
-
-    startGame.textContent = `Starting in ${countdown}...`
+    startGameBtn.textContent = `Starting in ${countdown}...`
     setInterval(() => {
         countdown --;
-        startGame.textContent = `Starting in ${countdown}...`;
+        startGameBtn.textContent = `Starting in ${countdown}...`;
     }, 1000)
     setTimeout(() => {
         overlay.style.display = 'none';
