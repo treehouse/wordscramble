@@ -25,10 +25,10 @@
             <h2>Times Up! 😢</h2>
             <div class="stat-container">
                 <div class="streaks-container">
-                    <p class="best-streak">Your best streak ever: <span></span></p>
-                    <p class="current-streak">Your streak this game: <span></span></p>
+                    <p class="best-streak">Your best streak ever: <span class="accent">01</span></p>
+                    <p class="current-streak">Your streak this game: <span class="accent">01</span></p>
                 </div>
-                <p class="no-personal-best-message" id="noPersonalBestMessage">Oh! You were <span></span> away from a new personal best!</p>
+                <p class="no-personal-best-message" id="noPersonalBestMessage">Oh! You were <span class="accent">01</span> away from a new personal best!</p>
                 <p class="personal-best-message" id="personalBestMessage">Woah! You have a new personal best! 🔥</p>
                 <button class="share" id="share">Share</button>
             </div>
@@ -40,5 +40,56 @@
         </div>
     </div>
 
+    <main class="gameboard" id="gameboard">
+        <header>
+            <h1><span class="accent">w</span>ord<span class="accent">s</span>cramble</h1>
+            <div class="streak-container">
+                <p class="best-streak">Best Streak: <span class="accent">01</span></p>
+                <p class="current-streak">Current Streak: <span class="accent">01</span></p>
+            </div>
+        </header>
+        <section class="scramble"></section>
+        <section class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </section>
+        <section class="keyboard">
+            <ul>
+                <li>q</li>
+                <li>w</li>
+                <li>e</li>
+                <li>r</li>
+                <li>t</li>
+                <li>y</li>
+                <li>u</li>
+                <li>i</li>
+                <li>o</li>
+                <li>p</li>
+            </ul>
+            <ul>
+                <li>a</li>
+                <li>s</li>
+                <li>f</li>
+                <li>g</li>
+                <li>h</li>
+                <li>j</li>
+                <li>k</li>
+                <li>l</li>
+            </ul>
+            <ul>
+                <li>z</li>
+                <li>x</li>
+                <li>c</li>
+                <li>v</li>
+                <li>b</li>
+                <li>n</li>
+                <li>m</li>
+            </ul>
+        </section>
+        <section class="branding">
+            <img src="./frontend/assets/thlogo.png" alt="th-logo"><p>treehouse</p>
+        </section>
+    </main>
+
+    <script src="./frontend/dist/scripts/app.js"></script>
 </body>
 </html>

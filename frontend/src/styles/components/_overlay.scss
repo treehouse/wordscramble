@@ -2,6 +2,7 @@
     @include flex(column, nowrap, center, center);
     @include bg($darker-bg);
     @include size(100vh, 100%);
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -28,11 +29,15 @@
         .stat-container {
             @include bg($darkest-bg);
             @include radius(.85rem);
+            font-size: 1.1rem;
             line-height: 2rem;
             color: white;
             padding: 1.25rem;
             .streaks-container {
                 margin-bottom: 1.5rem;
+            }
+            .personal-best-message {
+                color: $primary;
             }
             button {
                 @include bg($primary);
@@ -51,15 +56,16 @@
     // game buttons
     .btn-group {
         @include flex(row, nowrap, center, center);
-        margin-top: 2rem;
-        gap: 1.5rem;
+        @include wrapper(400px);
+        margin-top: 5rem;
+        gap: 1rem;
         button {
             @include radius(5px);
             @include bg($dark-bg);
+            width: 100%;
             cursor: pointer;
             border: none;
             padding: .75rem 1rem;
-            min-width: 185px;
             font-size: 1rem;
             transition: color .3s ease, background .3s ease;
             &:first-child {

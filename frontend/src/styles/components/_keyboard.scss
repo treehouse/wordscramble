@@ -1,0 +1,34 @@
+section.keyboard {
+    @include wrapper($wrapper);
+    @include bg($darker-bg);
+    @include radius(.65rem);
+    @include flex(column, nowrap, center, center);
+    padding: 4rem 2rem;
+    margin: .5rem auto 2rem;
+    color: $darker-bg;
+    ul {
+        @include flex(row, nowrap, center, center);
+        list-style:none;
+        li {
+            @include bg($gray);
+            @include same-size(55px);
+            @include center-flex;
+            @include radius(.25rem);
+            cursor: pointer;
+            font-size: 1.3rem;
+            margin: .25rem;
+            font-family: $primary-font;
+            transition: background .3s, color .3s, transform .1s;
+            &::selection {
+                @include bg(transparent);
+                color: $darker-bg;
+            }
+            &:hover {
+                @include bg(lighten($gray, 15%));
+            }
+            &:active {
+                transform: scale(.9);
+            }
+        }
+    }
+}

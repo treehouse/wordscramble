@@ -1,0 +1,15 @@
+section.progress-bar {
+    @include wrapper($wrapper);
+    @include size(8px, 100%);
+    @include radius(25px);
+    @include bg($darker-bg);
+    // @include flex(row, nowrap, flex-end, center);
+    overflow: hidden;
+    margin: 0 auto;
+    .progress {
+        @include size(100%, 75%);
+        @include bg($primary);
+        @include radius(25px);
+        transition: width 10s linear;
+    }
+}

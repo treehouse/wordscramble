@@ -1,0 +1,1 @@
+const startGame=document.getElementById("startNewGame"),overlay=document.getElementById("overlay");startGame.addEventListener("click",(()=>{overlay.style.display="none"}));

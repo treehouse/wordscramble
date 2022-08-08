@@ -1,0 +1,20 @@
+header {
+    @include wrapper($wrapper);
+    @include bg($darker-bg);
+    @include radius(.85rem);
+    @include flex(row, nowrap, space-between, center);
+    padding: 1rem 2rem;
+    min-height: 50px;
+    h1 {
+        color: white;
+        font-size: 1.4rem;
+        span {
+            text-transform: uppercase;;
+        }
+    }
+    .streak-container {
+        @include flex(row, wrap, center, center);
+        gap: 0 1rem;
+        color: white;
+    }
+}

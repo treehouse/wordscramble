@@ -1,0 +1,8 @@
+section.branding {
+    @include flex(row, nowrap, center, center);
+    gap: 0 .5rem;
+    color: white;
+    img {
+        width: 25px;
+    }
+}
