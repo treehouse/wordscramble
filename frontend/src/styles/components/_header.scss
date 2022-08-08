@@ -1,7 +1,7 @@
 header {
     @include wrapper($wrapper);
     @include bg($darker-bg);
-    @include radius(.85rem);
+    @include radius(.65rem);
     @include flex(row, nowrap, space-between, center);
     padding: 1rem 2rem;
     min-height: 50px;
