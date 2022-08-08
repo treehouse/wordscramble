@@ -11,6 +11,7 @@
 body {
     @include bg($dark-bg);
     min-height: 100vh;
+    overflow: hidden;
 }
 
 span.accent {

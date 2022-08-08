@@ -1,0 +1,42 @@
+.overlay .modal-container {
+    @include bg(transparent);
+    @include size(100%, 100%);
+    @include center-flex;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    &.active {
+        display: flex;
+        pointer-events: auto;
+    }
+    .modal {
+        @include wrapper(500px);
+        @include bg($dark-bg);
+        @include radius(10px);
+        animation: bounceInUp .6s ease forwards;
+        padding: 1rem 2rem;
+        color: white;
+        p.title {
+            font-size: 1.25rem;
+            text-align: center;
+            margin: 1rem auto 2rem;
+        }
+        p.description {
+            opacity: 0.7;
+        }
+        button {
+            @include bg($primary);
+            @include radius(5px);
+            font-size: 1rem;
+            border: none;
+            margin: 2rem auto 1rem;
+            color: $darkest-bg;
+            cursor: pointer;
+            display: block;
+            padding: .5rem 1.5rem;
+            
+        }
+    }
+}

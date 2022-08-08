@@ -2,7 +2,7 @@
     @include flex(column, nowrap, center, center);
     @include bg($darker-bg);
     @include size(100vh, 100%);
-    display: none;
+    // display: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -77,6 +77,10 @@
             &:hover {
                 @include bg($primary);
                 color: $darker-bg;
+            }
+            &[disabled] {
+                opacity: 0.2;
+                pointer-events: none;
             }
         }
     }
