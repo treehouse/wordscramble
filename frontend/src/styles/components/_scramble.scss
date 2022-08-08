@@ -1,0 +1,28 @@
+section.scramble {
+    @include flex(column, nowrap, center, center);
+    ul.scrambled-word-container,
+    ul.scrambled-word-guess-container {
+        @include flex(row, nowrap, center, center);
+        list-style: none;
+    }
+    ul.scrambled-word-container {
+        gap: 1rem;
+        font-size: 3rem;
+        color: white;
+    }
+    ul.scrambled-word-guess-container {
+        margin-top: 1.5rem;
+        li {
+            @include same-size(75px);
+            @include radius(5px);
+            @include bg($gray);
+            @include center-flex;
+            margin: auto .25rem;
+            font-size: 2.5rem;
+            color: $darker-bg;
+            &.pending {
+                @include bg($primary);
+            }
+        }
+    }
+}

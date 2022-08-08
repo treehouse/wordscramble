@@ -7,9 +7,26 @@ section.progress-bar {
     overflow: hidden;
     margin: 0 auto;
     .progress {
-        @include size(100%, 75%);
+        --progress: 100%;
+        @include size(100%, var(--progress));
         @include bg($primary);
         @include radius(25px);
         transition: width 10s linear;
+        animation: timer 10s linear forwards;
+    }
+}
+
+
+@keyframes timer {
+    0% {
+        @include bg($primary);
+        width: 100%;
+    }
+    75% {
+        @include bg($error-red);
+    }
+    100% {
+        @include bg($error-red);
+        width: 0%;
     }
 }
