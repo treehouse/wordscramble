@@ -128,7 +128,12 @@ document.addEventListener('keydown', e => {
 });
 
 keyboard.addEventListener('click', e => {
-    handleGuesses(e);
+    let letter = document.querySelectorAll('#keyboard li');
+    letter.forEach((l) => {
+        if (e.target === l) {
+            handleGuesses(e);
+        }
+    })
 });
 
 
