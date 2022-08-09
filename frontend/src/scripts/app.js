@@ -4,10 +4,11 @@ const words = [
     'javascript'
 ];
 
+// seconds
+const timeLimit = 15;
 
-
-
-
+const timeLimitSpan = document.getElementById('timeLimit');
+timeLimitSpan.textContent = timeLimit;
 
 
 let wordToGuess;
@@ -27,14 +28,14 @@ function startNewGame() {
 
     
     setTimeout(() => {
-        progress.style.animation = 'timer 10s linear forwards';
+        progress.style.animation = `timer ${timeLimit}s linear forwards`;
     }, 500);
 
 
     wordToGuess = words[Math.floor(Math.random() * words.length)];
     wordToGuessSplit = wordToGuess.split("");
     let randomWord = shuffle(wordToGuessSplit);
-    let randomWordLength = randomWord.length;
+    // let randomWordLength = randomWord.length;
 
     randomWord.forEach((letter) => {
         // adds shuffled word to gameboard
@@ -86,17 +87,22 @@ function handleGuesses(e) {
     let alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
     if (e.keyCode == 8) {
-        guessIndex --;
-        guess[guessIndex].textContent = '';
+        if (guessIndex != 0) {
+            guessIndex --;
+            guess[guessIndex].textContent = '';
+            guess[guessIndex].classList.remove('pending');
+        }
     }
     // for keypresses
     if (alphabet.includes(e.key)) {
         guess[guessIndex].textContent = e.key;
+        guess[guessIndex].classList.add('pending');
         guessIndex += 1;
     } else
     // for keyboard click
     if (alphabet.includes(e.target.textContent)) {
         guess[guessIndex].textContent = e.target.textContent;
+        guess[guessIndex].classList.add('pending');
         guessIndex += 1;
     }
 
@@ -111,16 +117,46 @@ function handleGuesses(e) {
 
         if (wordToGuess === guessedWord.toString().replace(/,/g,"")) {
             guessedWord = [];
-            startNewGame();
+            handleCorrectLetterAnimations();
+            setTimeout(() => {
+                startNewGame();
+            }, 1200);
         } else {
             guessedWord = [];
             guess.forEach((letter) => {
                 letter.textContent = '';
-            })
+            });
+            handleWrongLetterAnimations();
+            
             guessIndex = 0;
         }
     }
+}
 
+function handleCorrectLetterAnimations() {
+    let letters = scrambledWordGuessContainer.querySelectorAll('li');
+    letters.forEach((letter) => {
+        letter.classList = '';
+    });
+    letters.forEach((letter) => {
+        letter.classList.add('correct');
+    });
+}
+
+function handleWrongLetterAnimations() {
+    let letters = scrambledWordGuessContainer.querySelectorAll('li');
+    letters.forEach((letter) => {
+        letter.classList = '';
+    })
+    letters.forEach((letter) => {
+        letter.classList.add('wrong');
+
+    });
+    setTimeout(() => {
+        letters.forEach((letter) => {
+            letter.classList.remove('wrong');
+        });
+    }, 500);
 }
 
 document.addEventListener('keydown', e => {

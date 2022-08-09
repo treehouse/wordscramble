@@ -21,8 +21,19 @@ section.scramble {
             margin: .25rem;
             font-size: 2.5rem;
             color: $darker-bg;
+            transition: background .3s ease, transform .3s ease;
+            animation: flipInY 1.2s ease forwards;
             &.pending {
                 @include bg($primary);
+                transform: translateY(15px);
+            }
+            &.correct {
+                @include bg($correct-green);
+                animation: flipOutY 1.2s ease forwards;
+            }
+            &.wrong {
+                @include bg($error-red);
+                animation: fadeOutDown 1s ease forwards;
             }
         }
     }
