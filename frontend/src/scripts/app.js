@@ -85,16 +85,22 @@ function handleGuesses(e) {
     let maxGuess = guess.length;
     let alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
+    if (e.keyCode == 8) {
+        guessIndex --;
+        guess[guessIndex].textContent = '';
+    }
     // for keypresses
     if (alphabet.includes(e.key)) {
         guess[guessIndex].textContent = e.key;
+        guessIndex += 1;
     } else
     // for keyboard click
     if (alphabet.includes(e.target.textContent)) {
         guess[guessIndex].textContent = e.target.textContent;
+        guessIndex += 1;
     }
 
-    guessIndex += 1;
+    
 
     if (guessIndex == maxGuess) {
 
@@ -117,7 +123,7 @@ function handleGuesses(e) {
 
 }
 
-document.addEventListener('keypress', e => {
+document.addEventListener('keydown', e => {
     handleGuesses(e);
 });
 
