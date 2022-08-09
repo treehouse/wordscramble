@@ -7,12 +7,11 @@ section.progress-bar {
     overflow: hidden;
     margin: 0 auto;
     .progress {
-        --progress: 100%;
-        @include size(100%, var(--progress));
+        @include size(100%, 100%);
         @include bg($primary);
         @include radius(25px);
         transition: width 10s linear;
-        animation: timer 10s linear forwards;
+        // animation: timer 10s linear forwards;
     }
 }
 

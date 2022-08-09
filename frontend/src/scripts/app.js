@@ -10,6 +10,8 @@ const words = [
 
 
 
+let wordToGuess;
+let wordToGuessSplit;
 
 
 // start new game
@@ -17,7 +19,21 @@ function startNewGame() {
     // choose random word and add to gameboard
     const scrambledWordContainer = document.getElementById('scrambledWordContainer');
     const scrambledWordGuessContainer = document.getElementById('scrambledWordGuessContainer');
-    let randomWord = shuffle(words[Math.floor(Math.random() * words.length)].split(""));
+    const progress = document.getElementById('progress');
+    scrambledWordContainer.innerHTML = '';
+    scrambledWordGuessContainer.innerHTML = '';
+    guessIndex = 0;
+    progress.style.animation = 'none';
+
+    
+    setTimeout(() => {
+        progress.style.animation = 'timer 10s linear forwards';
+    }, 500);
+
+
+    wordToGuess = words[Math.floor(Math.random() * words.length)];
+    wordToGuessSplit = wordToGuess.split("");
+    let randomWord = shuffle(wordToGuessSplit);
     let randomWordLength = randomWord.length;
 
     randomWord.forEach((letter) => {
@@ -42,16 +58,72 @@ function startNewGame() {
     }
 }
 
+// temp test for failing game
+document.getElementById('progress').addEventListener('animationend', () => {
+    overlay.style.display = 'flex';
+    gameBoard.style.display = 'none';
+    gameStats.style.display = 'block';
+
+    // disable buttons on overlay
+    howToPlayBtn.removeAttribute('disabled');
+    startGameBtn.removeAttribute('disabled');
+
+    gameTitle.innerHTML = '<span class="accent">w</span>ord<span class="accent">s</span>cramble';
+    gameTitle.style.animation = 'bounceInDown 1s ease forwards';
+
+    startGameBtn.textContent = 'Start New Game';
+})
 
 
 
 
 
+let guessIndex = 0;
+let guessedWord = [];
+function handleGuesses(e) {
+    let guess = document.querySelectorAll('#scrambledWordGuessContainer li');
+    let maxGuess = guess.length;
+    let alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
+    // for keypresses
+    if (alphabet.includes(e.key)) {
+        guess[guessIndex].textContent = e.key;
+    } else
+    // for keyboard click
+    if (alphabet.includes(e.target.textContent)) {
+        guess[guessIndex].textContent = e.target.textContent;
+    }
 
+    guessIndex += 1;
 
+    if (guessIndex == maxGuess) {
 
+        guess.forEach((letter) => {
+            let guessedLetter = letter.textContent;
+            guessedWord.push(guessedLetter);
+        });
 
+        if (wordToGuess === guessedWord.toString().replace(/,/g,"")) {
+            guessedWord = [];
+            startNewGame();
+        } else {
+            guessedWord = [];
+            guess.forEach((letter) => {
+                letter.textContent = '';
+            })
+            guessIndex = 0;
+        }
+    }
+
+}
+
+document.addEventListener('keypress', e => {
+    handleGuesses(e);
+});
+
+keyboard.addEventListener('click', e => {
+    handleGuesses(e);
+});
 
 
 
@@ -65,24 +137,28 @@ const gameBoard = document.getElementById('gameboard');
 const overlay = document.getElementById('overlay');
 const gameTitle = document.getElementById('gameTitle');
 
-startGameBtn.addEventListener('click', startGame);
+startGameBtn.addEventListener('click', () => {
+    showGameboard(5);
+});
 
-function startGame() {
+function showGameboard(countdown) {
+    // hide gameStats if visible
+    gameStats.style.display = 'none';
+
     // disable buttons on overlay
     howToPlayBtn.setAttribute('disabled', true);
     startGameBtn.setAttribute('disabled', true);
 
     // update title
-    gameTitle.innerHTML = '<span class="accent">g</span>et<span class="accent">r</span>eady!';
+    gameTitle.innerHTML = '<span class="accent">g</span>et<span class="accent">r</span>eady<span class="accent">!</span>';
     gameTitle.style.animation = 'bounceInUp 1s ease forwards';
     setTimeout(() => {
         gameTitle.style.animation = 'bounceOutDown 1s ease forwards';
     }, 4000);
 
     // start game countdown from 5
-    let countdown = 5;
     startGameBtn.textContent = `Starting in ${countdown}...`
-    setInterval(() => {
+    let countdownToGame = setInterval(() => {
         countdown --;
         startGameBtn.textContent = `Starting in ${countdown}...`;
     }, 1000);
@@ -91,6 +167,7 @@ function startGame() {
     setTimeout(() => {
         overlay.style.display = 'none';
         gameBoard.style.display = 'flex';
+        clearInterval(countdownToGame);
     }, 5000);
 
     // initiates a new game
@@ -98,9 +175,9 @@ function startGame() {
 }
 
 
+// //  T EM M P O R AR Y
+// startNewGame();
 
-document.addEventListener('keypress', e => {
-})
 
 
 
