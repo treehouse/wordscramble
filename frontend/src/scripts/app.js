@@ -4,7 +4,7 @@ const words = [
 ];
 
 // game time limit (in seconds)
-const timeLimit = 15;
+const timeLimit = 12;
 
 const timeLimitSpan = document.getElementById('timeLimit');
 timeLimitSpan.textContent = timeLimit;
@@ -93,7 +93,6 @@ document.getElementById('progress').addEventListener('animationend', () => {
 
     startGameBtn.textContent = 'Start New Game';
 
-    handleStreakMessage();
 })
 
 
@@ -341,10 +340,42 @@ function updateStreak(streak) {
     }
 }
 
-function handleStreakMessage() {
-    if (!localStorage.scrambleBestStreak > currentStreak) {
-        alert('show PR');
-    }
-}
 
+
+
+
+
+const shareBtn = document.getElementById('share');
+shareBtn.addEventListener('click', () => {
+    // hidden textarea
+    let textarea = document.querySelector('textarea');
+
+    // get current date & format
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0');
+    let yyyy = today.getFullYear();
+    today = mm + '/' + dd + '/' + yyyy;
+
+    let todaysBestStreak = localStorage.scrambleBestStreak;
+    let todaysCurrentStreak = currentStreak;
+
+    textarea.textContent = 
+    `
+    WordScramble on ${today}:
+    - My all-time best streak: ${todaysBestStreak}
+    - My last game's streak was: ${todaysCurrentStreak}
+
+    Think you could do better? Give it a try at treehouse.github.io/wordscramble
+    `
+
+    textarea.select();
+    document.execCommand("copy");
+
+    shareBtn.textContent = 'Copied!'
+    setTimeout(() => {
+        shareBtn.textContent = 'Share';
+        textarea.textContent = '';
+    }, 3000)
+});
 
