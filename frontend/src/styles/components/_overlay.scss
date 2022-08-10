@@ -36,7 +36,8 @@
             h2 {
                 font-size: 2.5rem;
                 color: $error-red;
-                transition: transform .6s ease;
+                transform: translate(-50%, 0);
+                transition: transform .6s ease, opacity 1s;
                 &.animate {
                     transform: translate(-50%, 100px);
                     opacity: 0;

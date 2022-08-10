@@ -26,6 +26,11 @@ function startNewGame() {
     guessIndex = 0;
     progress.style.animation = 'none';
 
+    const headerText = document.querySelectorAll('.header-text');
+    headerText.forEach((text) => {
+        text.classList.remove('animate');
+    })
+
     updateStreak(currentStreak);
     
     setTimeout(() => {
