@@ -1,7 +1,7 @@
 import { words } from '../scripts/words.js';
 
 // game time limit (in seconds)
-const timeLimit = 15;
+const timeLimit = 20;
 
 const timeLimitSpan = document.getElementById('timeLimit');
 timeLimitSpan.textContent = timeLimit;
