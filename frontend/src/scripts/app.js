@@ -1,10 +1,7 @@
-// words array
-const words = [
-    'brian', 'dustin', 'rohald', 'jason', 'kari', 'kara', 'rachel', 'chris', 'stevee', 'amy', 'jesse', 'laura', 'ashlyn', 'travis', 'sarah', 'luke'
-];
+import { words } from '../scripts/words.js';
 
 // game time limit (in seconds)
-const timeLimit = 12;
+const timeLimit = 15;
 
 const timeLimitSpan = document.getElementById('timeLimit');
 timeLimitSpan.textContent = timeLimit;
@@ -38,7 +35,7 @@ function startNewGame() {
     }, 500);
 
 
-    wordToGuess = words[Math.floor(Math.random() * words.length)];
+    wordToGuess = words[Math.floor(Math.random() * words.length)].toLowerCase();
     wordToGuessSplit = wordToGuess.split("");
     let randomWord = shuffle(wordToGuessSplit);
     // let randomWordLength = randomWord.length;
