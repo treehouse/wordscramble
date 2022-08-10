@@ -21,10 +21,38 @@
         @include wrapper(500px);
         display: none;
         text-align: center;
-        h2 {
-            font-size: 2.5rem;
-            margin: 1.5rem;
-            color: $error-red;
+        .header-container {
+            @include center-flex;
+            flex-direction: column;
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            h2, h3 {
+                @include absolute-center;
+                width: 500px;
+                text-align:center;
+            }
+            h2 {
+                font-size: 2.5rem;
+                color: $error-red;
+                transition: transform .6s ease;
+                &.animate {
+                    transform: translate(-50%, 100px);
+                    opacity: 0;
+                }
+            }
+            h3 {
+                opacity: 0;
+                color: white;
+                font-size: 2rem;
+                transform: translate(-50%, 100px);
+                transition: opacity 1s ease, transform .6s ease;
+                &.animate {
+                    opacity: 1;
+                    transform: translate(-50%, 0);
+                }
+            }
         }
         .stat-container {
             @include bg($darkest-bg);

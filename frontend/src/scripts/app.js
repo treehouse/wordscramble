@@ -4,7 +4,7 @@ const words = [
 ];
 
 // game time limit (in seconds)
-const timeLimit = 5;
+const timeLimit = 15;
 
 const timeLimitSpan = document.getElementById('timeLimit');
 timeLimitSpan.textContent = timeLimit;
@@ -67,6 +67,18 @@ document.getElementById('progress').addEventListener('animationend', () => {
     gameBoard.style.display = 'none';
     gameStats.style.display = 'block';
 
+    // showing word to display:
+    let gameStatsH2 = document.querySelector('.game-stats h2');
+    let gameStatsH3 = document.querySelector('.game-stats h3');
+    let wordSpan = document.querySelector('span.current-word');
+    wordSpan.textContent = wordToGuess;
+    setTimeout(() => {
+        gameStatsH2.classList.add('animate');
+        setTimeout(() => {
+            gameStatsH3.classList.add('animate');
+        }, 100 )
+    }, 1200)
+
     // disable buttons on overlay
     howToPlayBtn.removeAttribute('disabled');
     startGameBtn.removeAttribute('disabled');
@@ -75,6 +87,8 @@ document.getElementById('progress').addEventListener('animationend', () => {
     gameTitle.style.animation = 'bounceInDown 1s ease forwards';
 
     startGameBtn.textContent = 'Start New Game';
+
+    handleStreakMessage();
 })
 
 
@@ -322,6 +336,10 @@ function updateStreak(streak) {
     }
 }
 
-
+function handleStreakMessage() {
+    if (!localStorage.scrambleBestStreak > currentStreak) {
+        alert('show PR');
+    }
+}
 
 
