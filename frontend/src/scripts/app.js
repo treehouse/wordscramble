@@ -1,7 +1,6 @@
 // words array
 const words = [
-    'python',
-    'javascript'
+    'brian', 'dustin', 'rohald', 'jason', 'kari', 'kara', 'rachel', 'chris', 'stevee', 'amy', 'jesse', 'laura', 'ashlyn', 'travis', 'sarah', 'luke'
 ];
 
 // seconds
