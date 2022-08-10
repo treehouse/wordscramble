@@ -358,13 +358,12 @@ shareBtn.addEventListener('click', () => {
     let todaysCurrentStreak = currentStreak;
 
     textarea.textContent = 
-    `
-    WordScramble on ${today}:
+    `WordScramble on ${today}:
     - My all-time best streak: ${todaysBestStreak}
     - My last game's streak was: ${todaysCurrentStreak}
 
-    Think you could do better? Give it a try at treehouse.github.io/wordscramble
-    `
+Think you could do better? Give it a try at
+treehouse.github.io/wordscramble`
 
     textarea.select();
     document.execCommand("copy");

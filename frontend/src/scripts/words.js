@@ -246,7 +246,6 @@ export const words = [
     "Laugh",
     "Learn",
     "Leave",
-    "Let’s",
     "Limit",
     "Marry",
     "Match",
