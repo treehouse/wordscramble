@@ -33,6 +33,9 @@
             line-height: 2rem;
             color: white;
             padding: 1.25rem;
+            .stat-message {
+                display: none;
+            }
             .streaks-container {
                 margin-bottom: 1.5rem;
             }

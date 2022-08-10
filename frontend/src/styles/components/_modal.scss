@@ -23,9 +23,6 @@
             text-align: center;
             margin: 1rem auto 2rem;
         }
-        p.description {
-            opacity: 0.7;
-        }
         button {
             @include bg($primary);
             @include radius(5px);

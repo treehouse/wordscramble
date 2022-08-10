@@ -16,5 +16,9 @@ header {
         @include flex(row, wrap, center, center);
         gap: 0 1rem;
         color: white;
+        span {
+            font-size: 1.5rem;
+            margin-left: .5rem;
+        }
     }
 }

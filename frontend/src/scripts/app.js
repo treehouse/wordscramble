@@ -3,8 +3,8 @@ const words = [
     'brian', 'dustin', 'rohald', 'jason', 'kari', 'kara', 'rachel', 'chris', 'stevee', 'amy', 'jesse', 'laura', 'ashlyn', 'travis', 'sarah', 'luke'
 ];
 
-// seconds
-const timeLimit = 15;
+// game time limit (in seconds)
+const timeLimit = 5;
 
 const timeLimitSpan = document.getElementById('timeLimit');
 timeLimitSpan.textContent = timeLimit;
@@ -12,6 +12,7 @@ timeLimitSpan.textContent = timeLimit;
 
 let wordToGuess;
 let wordToGuessSplit;
+let currentStreak = 0;
 
 
 // start new game
@@ -25,6 +26,7 @@ function startNewGame() {
     guessIndex = 0;
     progress.style.animation = 'none';
 
+    updateStreak(currentStreak);
     
     setTimeout(() => {
         progress.style.animation = `timer ${timeLimit}s linear forwards`;
@@ -58,8 +60,9 @@ function startNewGame() {
     }
 }
 
-// temp test for failing game
+// logic for failing game
 document.getElementById('progress').addEventListener('animationend', () => {
+
     overlay.style.display = 'flex';
     gameBoard.style.display = 'none';
     gameStats.style.display = 'block';
@@ -78,6 +81,12 @@ document.getElementById('progress').addEventListener('animationend', () => {
 
 
 
+
+
+
+
+
+
 let guessIndex = 0;
 let guessedWord = [];
 function handleGuesses(e) {
@@ -85,6 +94,7 @@ function handleGuesses(e) {
     let maxGuess = guess.length;
     let alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
+    // for backspaces
     if (e.keyCode == 8) {
         if (guessIndex != 0) {
             guessIndex --;
@@ -92,21 +102,21 @@ function handleGuesses(e) {
             guess[guessIndex].classList.remove('pending');
         }
     }
+
     // for keypresses
     if (alphabet.includes(e.key)) {
         guess[guessIndex].textContent = e.key;
         guess[guessIndex].classList.add('pending');
         guessIndex += 1;
-    } else
+    } 
     // for keyboard click
-    if (alphabet.includes(e.target.textContent)) {
+    else if (alphabet.includes(e.target.textContent)) {
         guess[guessIndex].textContent = e.target.textContent;
         guess[guessIndex].classList.add('pending');
         guessIndex += 1;
     }
 
-    
-
+    // if all letters are guessed
     if (guessIndex == maxGuess) {
 
         guess.forEach((letter) => {
@@ -116,21 +126,48 @@ function handleGuesses(e) {
 
         if (wordToGuess === guessedWord.toString().replace(/,/g,"")) {
             guessedWord = [];
+            
             handleCorrectLetterAnimations();
+            progress.style.animation = 'none';
+            progress.style.background = 'transparent';
             setTimeout(() => {
+                currentStreak ++;
                 startNewGame();
             }, 1200);
+            // startNewGame();
         } else {
             guessedWord = [];
             guess.forEach((letter) => {
                 letter.textContent = '';
             });
             handleWrongLetterAnimations();
-            
             guessIndex = 0;
         }
     }
 }
+
+document.addEventListener('keydown', e => {
+    handleGuesses(e);
+});
+
+keyboard.addEventListener('click', e => {
+    let letter = document.querySelectorAll('#keyboard li');
+    letter.forEach((l) => {
+        if (e.target === l) {
+            handleGuesses(e);
+        }
+    })
+});
+
+
+
+
+
+
+
+
+
+
 
 function handleCorrectLetterAnimations() {
     let letters = scrambledWordGuessContainer.querySelectorAll('li');
@@ -158,18 +195,16 @@ function handleWrongLetterAnimations() {
     }, 500);
 }
 
-document.addEventListener('keydown', e => {
-    handleGuesses(e);
-});
 
-keyboard.addEventListener('click', e => {
-    let letter = document.querySelectorAll('#keyboard li');
-    letter.forEach((l) => {
-        if (e.target === l) {
-            handleGuesses(e);
-        }
-    })
-});
+
+
+
+
+
+
+
+
+
 
 
 
@@ -188,6 +223,10 @@ startGameBtn.addEventListener('click', () => {
 });
 
 function showGameboard(countdown) {
+
+    // sets currentStreak to 0
+    currentStreak = 0;
+
     // hide gameStats if visible
     gameStats.style.display = 'none';
 
@@ -221,6 +260,13 @@ function showGameboard(countdown) {
 }
 
 
+
+
+
+
+
+
+
 // //  T EM M P O R AR Y
 // startNewGame();
 
@@ -247,6 +293,34 @@ function toggleModal() {
 
 
 
+// initializes streaks in localStorage
+if (!localStorage.scrambleBestStreak) {
+    localStorage.setItem('scrambleBestStreak', 0);
+}
+
+if (!localStorage.scrambleCurrentStreak) {
+    localStorage.setItem('scrambleCurrentStreak', 0);
+} else {
+    let bestStreakText = document.querySelectorAll('.best-streak span');
+    bestStreakText.forEach((text) => {
+        text.textContent = localStorage.scrambleBestStreak;
+    })
+}
+
+function updateStreak(streak) {
+    let currentStreakText = document.querySelectorAll('.current-streak span');
+    currentStreakText.forEach((text) => {
+        text.textContent = streak;
+    });
+
+    if (currentStreak > localStorage.scrambleBestStreak) {
+        localStorage.scrambleBestStreak = Number(currentStreak);
+        let bestStreakText = document.querySelectorAll('.best-streak span');
+        bestStreakText.forEach((text) => {
+            text.textContent = localStorage.scrambleBestStreak;
+        })
+    }
+}
 
 
 

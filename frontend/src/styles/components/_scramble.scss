@@ -33,7 +33,7 @@ section.scramble {
             }
             &.wrong {
                 @include bg($error-red);
-                animation: fadeOutDown 1s ease forwards;
+                animation: fadeOutDown 1.2s ease forwards;
             }
         }
     }
