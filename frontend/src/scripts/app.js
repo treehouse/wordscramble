@@ -118,6 +118,7 @@ function handleGuesses(e) {
         }
     }
 
+    
     // for keypresses
     if (alphabet.includes(e.key)) {
         guess[guessIndex].textContent = e.key;
@@ -141,7 +142,7 @@ function handleGuesses(e) {
 
         if (wordToGuess === guessedWord.toString().replace(/,/g,"")) {
             guessedWord = [];
-            
+            guessIndex = 0;
             handleCorrectLetterAnimations();
             progress.style.animation = 'none';
             progress.style.background = 'transparent';
@@ -149,7 +150,6 @@ function handleGuesses(e) {
                 currentStreak ++;
                 startNewGame();
             }, 1200);
-            // startNewGame();
         } else {
             guessedWord = [];
             guess.forEach((letter) => {
