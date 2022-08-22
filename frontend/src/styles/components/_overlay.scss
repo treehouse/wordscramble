@@ -10,8 +10,14 @@
     // title
     h1.game-title {
         margin-bottom: 2rem;
-        font-size: 4rem;
+        font-size: 2rem;
         color: white;
+        @include break(smedium) {
+            font-size: 3rem;
+        }
+        @include break(medium) {
+            font-size: 4rem;
+        }
         span.accent {
             text-transform: uppercase;
         }
@@ -87,10 +93,13 @@
 
     // game buttons
     .btn-group {
-        @include flex(row, nowrap, center, center);
+        @include flex(row, wrap, center, center);
         @include wrapper(400px);
         margin-top: 5rem;
         gap: 1rem;
+        @include break(smedium) {
+            flex-wrap: nowrap;
+        }
         button {
             @include radius(5px);
             @include bg($dark-bg);

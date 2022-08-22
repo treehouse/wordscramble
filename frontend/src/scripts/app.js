@@ -1,8 +1,10 @@
+// importing word list
 import { words } from '../scripts/words.js';
 
 // game time limit (in seconds)
-const timeLimit = 20;
+const timeLimit = 20000000;
 
+// sets the UI to show timeLimit
 const timeLimitSpan = document.getElementById('timeLimit');
 timeLimitSpan.textContent = timeLimit;
 
@@ -63,7 +65,8 @@ function startNewGame() {
 }
 
 // logic for failing game
-document.getElementById('progress').addEventListener('animationend', () => {
+const progress = document.getElementById('progress');
+progress.addEventListener('animationend', () => {
 
     overlay.style.display = 'flex';
     gameBoard.style.display = 'none';
@@ -90,7 +93,7 @@ document.getElementById('progress').addEventListener('animationend', () => {
 
     startGameBtn.textContent = 'Start New Game';
 
-})
+});
 
 
 

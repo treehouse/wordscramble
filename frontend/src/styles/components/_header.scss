@@ -2,9 +2,12 @@ header {
     @include wrapper($wrapper);
     @include bg($darker-bg);
     @include radius(.65rem);
-    @include flex(row, nowrap, space-between, center);
+    @include flex(column, nowrap, space-between, center);
     padding: 1rem 2rem;
     min-height: 50px;
+    @include break(smedium) {
+        flex-direction: row;
+    }
     h1 {
         color: white;
         font-size: 1.4rem;
@@ -14,11 +17,18 @@ header {
     }
     .streak-container {
         @include flex(row, wrap, center, center);
+        margin-top: 2rem;
         gap: 0 1rem;
         color: white;
+        @include break(smedium) {
+            margin-top: auto;
+        }
         span {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             margin-left: .5rem;
+            @include break(medium) {
+                font-size: 1.5rem;
+            }
         }
     }
 }

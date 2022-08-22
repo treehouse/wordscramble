@@ -3,23 +3,32 @@ section.keyboard {
     @include bg($darker-bg);
     @include radius(.65rem);
     @include flex(column, nowrap, center, center);
-    padding: 4rem 2rem;
     margin: .5rem auto 2rem;
     color: $darker-bg;
+    @include break(medium) {
+        padding: 4rem 2rem;
+    }
     ul {
         @include flex(row, nowrap, center, center);
+        width: 100%;
         animation: bounceIn 1s ease forwards;
         list-style:none;
         li {
             @include bg($gray);
-            @include same-size(55px);
             @include center-flex;
             @include radius(.25rem);
+            height: 70px;
+            width: 100%;
             cursor: pointer;
-            font-size: 1.4rem;
-            margin: .25rem;
+            font-size: 1.2rem;
+            margin: .08rem;
             font-family: $primary-font;
             transition: background .3s, color .3s, transform .1s;
+            @include break(medium) {
+                @include same-size(55px);
+                margin: .25rem;
+                font-size: 1.5rem;
+            }
             &::selection {
                 @include bg(transparent);
                 color: $darker-bg;

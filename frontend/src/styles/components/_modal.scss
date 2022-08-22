@@ -1,11 +1,9 @@
 .overlay .modal-container {
     @include bg(transparent);
-    @include size(100%, 100%);
+    @include size(100%, 95%);
     @include center-flex;
+    @include absolute-center;
     display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
     pointer-events: none;
     &.active {
         display: flex;
