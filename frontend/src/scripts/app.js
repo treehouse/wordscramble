@@ -169,12 +169,21 @@ document.addEventListener('keydown', e => {
 });
 
 keyboard.addEventListener('click', e => {
-    let letter = document.querySelectorAll('#keyboard li');
-    letter.forEach((l) => {
-        if (e.target === l) {
-            handleGuesses(e);
+    if (!e.target.classList.contains('backspace-key')) {
+        let letter = document.querySelectorAll('#keyboard li');
+        letter.forEach((l) => {
+            if (e.target === l) {
+                handleGuesses(e);
+            }
+        })
+    } else {
+        if (guessIndex != 0) {
+            let guess = document.querySelectorAll('#scrambledWordGuessContainer li');
+            guessIndex --;
+            guess[guessIndex].textContent = '';
+            guess[guessIndex].classList.remove('pending');
         }
-    })
+    }
 });
 
 

@@ -12,7 +12,6 @@
         &:last-child {
             margin: 0;
             margin-bottom: 4rem;
-            @include bg(red);
             @include break(medium) {
                 margin-bottom: 0;
             }
