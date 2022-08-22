@@ -31,34 +31,28 @@
             @include center-flex;
             flex-direction: column;
             position: relative;
-            height: 150px;
+            // height: 150px;
             overflow: hidden;
             margin-bottom: 2rem;
             h2, h3 {
-                @include absolute-center;
-                width: 500px;
+                // @include absolute-center;
+                // width: 500px;
                 text-align:center;
             }
             h2 {
                 font-size: 2.5rem;
                 color: $error-red;
-                transform: translate(-50%, 0);
                 transition: transform .6s ease, opacity 1s;
-                &.animate {
-                    transform: translate(-50%, 100px);
-                    opacity: 0;
-                }
+                animation: fadeOutWord .5s 1s ease forwards;
             }
             h3 {
                 opacity: 0;
+                margin-top: .6rem;
                 color: white;
                 font-size: 2rem;
-                transform: translate(-50%, 100px);
+                margin-bottom: -50px;
                 transition: opacity 1s ease, transform .6s ease;
-                &.animate {
-                    opacity: 1;
-                    transform: translate(-50%, 0);
-                }
+                animation: fadeInWord 1s 1s ease forwards;
             }
         }
         .stat-container {
@@ -127,5 +121,24 @@
                 }
             }
         }
+    }
+}
+
+
+@keyframes fadeInWord {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        margin-bottom: 0;
+        opacity: 1;
+    }
+}
+@keyframes fadeOutWord {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
     }
 }
