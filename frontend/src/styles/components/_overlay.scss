@@ -34,19 +34,18 @@
             // height: 150px;
             overflow: hidden;
             margin-bottom: 2rem;
-            h2, h3 {
-                // @include absolute-center;
-                // width: 500px;
-                text-align:center;
-            }
             h3 {
+                text-align: center;
                 opacity: 0;
                 margin-top: .6rem;
                 color: white;
-                font-size: 2rem;
+                font-size: 1.1rem;
                 margin-bottom: -50px;
                 transition: opacity 1s ease, transform .6s ease;
                 animation: fadeInWord 1s 1s ease forwards;
+                @include break(medium) {
+                    font-size: 2rem;
+                }
             }
         }
         .stat-container {
