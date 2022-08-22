@@ -11,6 +11,11 @@
         margin: 1rem auto;
         &:last-child {
             margin: 0;
+            margin-bottom: 2rem;
+            @include bg(red);
+            @include break(medium) {
+                margin-bottom: 0;
+            }
         }
         &.scramble {
             margin: auto;
@@ -22,9 +27,9 @@
 
 // T EM M P O R AR Y
 
-// .overlay {
-//     display: none!important;
-// }
-// main.gameboard {
-//     display: flex!important;
-// }
+.overlay {
+    display: none!important;
+}
+main.gameboard {
+    display: flex!important;
+}

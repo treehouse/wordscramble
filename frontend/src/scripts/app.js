@@ -286,7 +286,7 @@ function showGameboard(countdown) {
 
 
 // //  T EM M P O R AR Y
-// startNewGame();
+startNewGame();
 
 
 
