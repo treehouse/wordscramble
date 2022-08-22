@@ -5,6 +5,7 @@
     @include absolute-center;
     display: none;
     pointer-events: none;
+    z-index: 10000;
     &.active {
         display: flex;
         pointer-events: auto;
