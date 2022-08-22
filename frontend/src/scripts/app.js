@@ -2,7 +2,7 @@
 import { words } from '../scripts/words.js';
 
 // game time limit (in seconds)
-const timeLimit = 20000000;
+const timeLimit = 20;
 
 // sets the UI to show timeLimit
 const timeLimitSpan = document.getElementById('timeLimit');
@@ -294,8 +294,8 @@ function showGameboard(countdown) {
 
 
 
-// //  T EM M P O R AR Y
-startNewGame();
+// //  for testing only
+// startNewGame();
 
 
 
