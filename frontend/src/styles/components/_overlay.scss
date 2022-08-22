@@ -39,12 +39,6 @@
                 // width: 500px;
                 text-align:center;
             }
-            h2 {
-                font-size: 2.5rem;
-                color: $error-red;
-                transition: transform .6s ease, opacity 1s;
-                animation: fadeOutWord .5s 1s ease forwards;
-            }
             h3 {
                 opacity: 0;
                 margin-top: .6rem;
@@ -132,13 +126,5 @@
     100% {
         margin-bottom: 0;
         opacity: 1;
-    }
-}
-@keyframes fadeOutWord {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
     }
 }

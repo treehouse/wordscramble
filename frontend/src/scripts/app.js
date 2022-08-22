@@ -2,7 +2,7 @@
 import { words } from '../scripts/words.js';
 
 // game time limit (in seconds)
-const timeLimit = 20;
+const timeLimit = 2;
 
 // sets the UI to show timeLimit
 const timeLimitSpan = document.getElementById('timeLimit');
@@ -25,10 +25,6 @@ function startNewGame() {
     guessIndex = 0;
     progress.style.animation = 'none';
 
-    const headerText = document.querySelectorAll('.header-text');
-    headerText.forEach((text) => {
-        text.classList.remove('animate');
-    })
 
     updateStreak(currentStreak);
     
@@ -73,16 +69,8 @@ progress.addEventListener('animationend', () => {
     gameStats.style.display = 'block';
 
     // showing word to display:
-    let gameStatsH2 = document.querySelector('.game-stats h2');
-    let gameStatsH3 = document.querySelector('.game-stats h3');
     let wordSpan = document.querySelector('span.current-word');
     wordSpan.textContent = wordToGuess;
-    setTimeout(() => {
-        gameStatsH2.classList.add('animate');
-        setTimeout(() => {
-            gameStatsH3.classList.add('animate');
-        }, 100 )
-    }, 1200)
 
     // disable buttons on overlay
     howToPlayBtn.removeAttribute('disabled');
